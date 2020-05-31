@@ -3,6 +3,17 @@ entries:
   route-admissioner:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-05-31T16:10:03.408947999Z"
+    description: Openshift operator for host whitelisting and label assignment on
+      Route
+    digest: c866cca44fc9e3451763f04579ead515ae1bc1d668ac6ea66b5d53a23f176616
+    name: route-admissioner
+    type: application
+    urls:
+    - https://github.com/cedricpoon/openshift-route-admissioner/releases/download/route-admissioner-0.1.2/route-admissioner-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-05-31T15:05:57.538853035Z"
     description: An operator for `spec.host` whitelisting and `metadata.label` auto
       assignment on `Route`.
