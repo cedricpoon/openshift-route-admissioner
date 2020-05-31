@@ -2,7 +2,7 @@
 
 : ${DOCKER_USER:? required}
 
-VERSION=$(cat Chart.yaml | grep -E '^appVersion: [0-9\.]+$' | tr -d 'appVersion: ')
+VERSION=$(cat chart/route-admissioner/Chart.yaml | grep -E '^appVersion: [0-9\.]+$' | tr -d 'appVersion: ')
 
 dep ensure -v
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o route-admissioner ./cmd/admissioner
