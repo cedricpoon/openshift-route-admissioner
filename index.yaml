@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  route-admissioner:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-05-31T15:05:57.538853035Z"
+    description: An operator for `spec.host` whitelisting and `metadata.label` auto
+      assignment on `Route`.
+    digest: b5197cc4cb3a0702e13995771d874435767a2dc99a4db91b405762035973cca6
+    name: route-admissioner
+    type: application
+    urls:
+    - https://github.com/cedricpoon/openshift-route-admissioner/releases/download/route-admissioner-0.1.1/route-admissioner-0.1.1.tgz
+    version: 0.1.1
+generated: "2020-05-31T15:05:57.439434227Z"
