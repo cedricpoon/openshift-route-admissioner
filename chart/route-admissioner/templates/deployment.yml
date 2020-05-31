@@ -1,0 +1,42 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: route-admissioner
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: route-admissioner
+spec:
+  replicas: 1
+  selector:
+    app: route-admissioner
+  triggers:
+    - type: ConfigChange 
+  template:
+    metadata:
+      labels:
+        app: route-admissioner
+    spec:
+      serviceAccountName: route-admissioner
+      containers:
+        - name: route-admissioner
+          image: cedricpoon/route-admissioner:{{ $.Chart.AppVersion }}
+          imagePullPolicy: Always
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          args:
+            - -tlsCertFile=/etc/admissioner/certs/cert.pem
+            - -tlsKeyFile=/etc/admissioner/certs/key.pem
+            - -alsologtostderr
+            - -v=4
+            - 2>&1
+          volumeMounts:
+            - name: admissioner-certs
+              mountPath: /etc/admissioner/certs
+              readOnly: true
+      volumes:
+        - name: admissioner-certs
+          secret:
+            secretName: route-admissioner-certs

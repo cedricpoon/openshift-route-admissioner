@@ -1,0 +1,21 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: webhook.route-admissioner.k8s.io
+  labels:
+    app: route-admissioner
+webhooks:
+  - name: route-admissioner.k8s.io
+    clientConfig:
+      service:
+        name: route-admissioner-svc
+        namespace: {{ .Release.Namespace }}
+        path: "/mutate"
+    rules:
+      - operations: [ "CREATE","UPDATE" ]
+        apiGroups: [ "route.openshift.io" ]
+        apiVersions: [ "v1" ]
+        resources: [ "routes" ]
+    namespaceSelector:
+      matchLabels:
+        route-admissioner/enabled: ''
