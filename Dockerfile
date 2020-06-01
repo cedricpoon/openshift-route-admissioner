@@ -22,4 +22,4 @@ COPY --from=0 /go/src/route-admissioner/route-admissioner ./route-admissioner
 
 USER daemon
 
-ENTRYPOINT [ "./run.sh" ]
+ENTRYPOINT ["./route-admissioner"]
