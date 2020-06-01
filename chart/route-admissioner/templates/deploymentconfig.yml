@@ -23,7 +23,7 @@ spec:
           command: ['./init.sh']
           imagePullPolicy: Always
           env:
-            - name: NAMESPACE
+            - name: namespace
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
