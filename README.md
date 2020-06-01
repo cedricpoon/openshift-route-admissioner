@@ -4,6 +4,11 @@
 
 Openshift operator for host whitelisting and label assignment on Route.
 
+## Environment
+- OpenShift 4.4.3
+- Kubernetes v1.17.1
+- Golang 1.14.3 darwin/amd64
+
 ## Installation
 This operator is distributed using **Helm 3**
 ```sh
