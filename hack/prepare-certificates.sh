@@ -58,11 +58,11 @@ echo "creating certs in tmpdir ${tmpdir} "
 
 # CA
 openssl genrsa -out ${tmpdir}/ca.key 2048
-openssl req -x509 -new -nodes -key ${tmpdir}/ca.key -sha256 -days ${days} -out ${tmpdir}/ca.crt -subj "/C=HK/CN=route-admissioner"
+openssl req -x509 -new -nodes -key ${tmpdir}/ca.key -sha256 -days ${days} -out ${tmpdir}/ca.crt -subj "/CN=route-admissioner"
 
 # Server
 openssl genrsa -out ${tmpdir}/server.key 2048
-openssl req -new -sha256 -key ${tmpdir}/server.key -subj "/C=HK/CN=${service}.${namespace}.svc" -out ${tmpdir}/server.csr
+openssl req -new -sha256 -key ${tmpdir}/server.key -subj "/CN=${service}.${namespace}.svc" -out ${tmpdir}/server.csr
 openssl x509 -req -in ${tmpdir}/server.csr -CA ${tmpdir}/ca.crt -CAkey ${tmpdir}/ca.key -CAcreateserial -out ${tmpdir}/server.crt -days ${days} -sha256
 
 # create the secret with CA cert and server cert/key
