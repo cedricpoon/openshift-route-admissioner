@@ -4,7 +4,7 @@ COPY . ./src/route-admissioner/
 
 WORKDIR /go/src/route-admissioner/
 
-RUN apk add dep && \
+RUN apk add dep git && \
     dep ensure -v && \
     CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o route-admissioner ./cmd/admissioner
 
