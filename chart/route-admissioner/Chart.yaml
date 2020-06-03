@@ -6,6 +6,6 @@ description: Openshift operator for host whitelisting and label assignment on Ro
 
 type: application
 
-version: 0.3.0
+version: 0.3.1
 
 appVersion: 0.3.0

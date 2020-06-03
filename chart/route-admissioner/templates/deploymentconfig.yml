@@ -21,7 +21,7 @@ spec:
         - name: admissioner-init
           image: cedricpoon/route-admissioner:{{ $.Chart.AppVersion }}
           command: ['./init.sh']
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: namespace
               valueFrom:
@@ -30,7 +30,7 @@ spec:
       containers:
         - name: route-admissioner
           image: cedricpoon/route-admissioner:{{ $.Chart.AppVersion }}
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           args:
             - -tlsCertFile=/etc/admissioner/certs/cert.pem
             - -tlsKeyFile=/etc/admissioner/certs/key.pem
