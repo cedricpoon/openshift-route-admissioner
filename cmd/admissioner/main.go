@@ -3,15 +3,31 @@ package main
 import (
 	"context"
 	"crypto/tls"
+	"crypto/x509"
 	"flag"
 	"fmt"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/golang/glog"
 )
+
+type ctxKey int
+
+const (
+	// CtxCert Key for TLS certificate
+	CtxCert = ctxKey(iota)
+)
+
+func validateCert(cert *x509.Certificate) {
+	if time.Now().AddDate(0, 1, 0).After(cert.NotAfter) {
+		glog.Warningf("Server certificate is expiring soon (%v), please consider to perform rolling update to renew certificate.", cert.NotAfter)
+	}
+}
 
 // Referred to main.go in https://github.com/banzaicloud/admission-webhook-example
 func main() {
@@ -28,10 +44,16 @@ func main() {
 		panic(err)
 	}
 
+	cert, err := x509.ParseCertificate(pair.Certificate[0])
+	ctx := context.WithValue(context.Background(), CtxCert, cert)
+
 	whsvr := &WebhookServer{
 		server: &http.Server{
 			Addr:      fmt.Sprintf(":%v", parameters.port),
 			TLSConfig: &tls.Config{Certificates: []tls.Certificate{pair}},
+			BaseContext: func(listener net.Listener) context.Context {
+				return ctx
+			},
 		},
 	}
 
