@@ -2,10 +2,10 @@ apiVersion: v2
 
 name: route-admissioner
 
-description: Openshift operator for host whitelisting and label assignment on Route
+description: Host whitelisting and label assignment on Route
 
 type: application
 
-version: 0.3.1
+version: 0.3.2
 
 appVersion: 0.3.0

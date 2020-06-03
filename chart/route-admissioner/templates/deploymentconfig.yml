@@ -45,3 +45,13 @@ spec:
         - name: admissioner-certs
           secret:
             secretName: route-admissioner-certs
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - route-admissioner
+              topologyKey: kubernetes.io/hostname
