@@ -92,7 +92,7 @@
   name = "github.com/openshift/api"
   packages = ["route/v1"]
   pruneopts = "UT"
-  revision = "34f54f12813aaed8822bb5bc56e97cbbfa92171d"
+  revision = "768b7001fe69671a251683d77d6e904633d1532e"
 
 [[projects]]
   digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
@@ -114,7 +114,7 @@
     "idna",
   ]
   pruneopts = "UT"
-  revision = "3c3fba18258b2a1398a025a6aeb7374d2a470009"
+  revision = "627f9648deb96c27737b83199d44bb5c1010cbcf"
 
 [[projects]]
   branch = "master"
@@ -129,7 +129,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:2f5a21f14e8b888ef4cb276a228d728084bb2404becc205cdd783b9e2cbee658"
+  digest = "1:30986a354a6c49a3706fa3483998a10328724f105b32b2911ac3554fc649579b"
   name = "golang.org/x/sys"
   packages = [
     "internal/unsafeheader",
@@ -137,7 +137,7 @@
     "windows",
   ]
   pruneopts = "UT"
-  revision = "05986578812163b26672dabd9b425240ae2bb0ad"
+  revision = "6fdc65e7d9800cc59998e8ac0d9406a20ff5f399"
 
 [[projects]]
   digest = "1:8d8faad6b12a3a4c819a3f9618cb6ee1fa1cfc33253abeeea8b55336721e3405"
@@ -395,12 +395,12 @@
   version = "v12.0.0"
 
 [[projects]]
-  digest = "1:93e82f25d75aba18436ad1ac042cb49493f096011f2541075721ed6f9e05c044"
+  digest = "1:fd24a140b16df03386fb0d9da8a5879e3b0178f35fff6545d3101f70ff9a4f1a"
   name = "k8s.io/klog"
   packages = ["."]
   pruneopts = "UT"
-  revision = "2ca9ad30301bf30a8a6e0fa2110db6b8df699a91"
-  version = "v1.0.0"
+  revision = "89e63fd5117f8c20208186ef85f096703a280c20"
+  version = "v0.3.1"
 
 [[projects]]
   digest = "1:8b40227d4bf8b431fdab4f9026e6e346f00ac3be5662af367a183f78c57660b3"
