@@ -5,11 +5,8 @@
 Openshift operator for host whitelisting and label assignment on Route.
 
 ## Environment
-- OpenShift 4.4.3
-- OKD 4.5.0 GA
-- Kubernetes v1.17.1
-- kubernetes v1.18.3
-- Golang 1.14.3 darwin/amd64
+- OpenShift 4.4.3 (Kubernetes v1.17.1)
+- OKD 4.5.0 GA (kubernetes v1.18.3)
 
 ## Installation
 This operator is distributed using **Helm 3**
