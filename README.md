@@ -18,6 +18,9 @@ helm search repo cedio/route-admissioner
 helm install route-admissioner cedio/route-admissioner --namespace route-admissioner-operator
 ```
 
+### High Availability
+You can set `Pod Count` for `Deployment Configs` to the size of nodes in cluster.
+
 ## Usage
 ### Domain Whitelisting
 The whitelisting guard for `Route` host is applied based on `Namespace` annotation.
