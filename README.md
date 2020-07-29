@@ -30,35 +30,35 @@ metadata:
   labels:
     route-admissioner/enabled: ''
   annotations:
-    route-admissioner/allowed-domain: 'gongfukheunggong.hk,sidoigakming.now'
+    route-admissioner/allowed-domain: 'hidden.hk,hidden.now'
 ```
 ### Route Labeling
 Route admissioner uses `Configmap/route-admissioner-label-map` for labelling `Route` which matches the rule set.
 ```yaml
 data:
-  key: "route-admissioner/factcheck"
+  key: "route-admissioner/hide"
   map: |-
     [
       {
-        "domain": "721.nobody",
+        "domain": "hidden.hk",
         "value": "True"
       },
       {
-        "domain": "831.massacre",
+        "domain": "hidden.now",
         "value": "True"
       },
       {
-        "domain": "101.gunshot",
+        "domain": "hidden.com",
         "value": "True"
       }
     ]
 ```
-Resulting object with host `yuenlong.721.nobody` will be
+Resulting object with host `hidden.hidden.hk` will be
 ```yaml
 kind: Route
 metadata:
   labels:
-    route-admissioner/factcheck: True
+    route-admissioner/hide: True
 ```
 
 ## Reference
