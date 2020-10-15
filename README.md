@@ -30,35 +30,35 @@ metadata:
   labels:
     route-admissioner/enabled: ''
   annotations:
-    route-admissioner/allowed-domain: 'hidden.hk,hidden.now'
+    route-admissioner/allowed-domain: 'xxx.hk,yyy.now'
 ```
 ### Route Labeling
 Route admissioner uses `Configmap/route-admissioner-label-map` for labelling `Route` which matches the rule set.
 ```yaml
 data:
-  key: "route-admissioner/hide"
+  key: "route-admissioner/toggled"
   map: |-
     [
       {
-        "domain": "hidden.hk",
+        "domain": "xxx.hk",
         "value": "True"
       },
       {
-        "domain": "hidden.now",
+        "domain": "yyy.now",
         "value": "True"
       },
       {
-        "domain": "hidden.com",
+        "domain": "zzz.com",
         "value": "True"
       }
     ]
 ```
-Resulting object with host `hidden.hidden.hk` will be
+Resulting object with host `one.xxx.hk` will be
 ```yaml
 kind: Route
 metadata:
   labels:
-    route-admissioner/hide: True
+    route-admissioner/toggled: True
 ```
 
 ## Reference
