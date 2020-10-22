@@ -1,0 +1,40 @@
+# Default values for openshift-route-admissioner
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+controller:
+  image:
+    repository: cedricpoon/route-admissioner
+
+  ## Affinity and anti-affinity
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - route-admissioner
+          topologyKey: kubernetes.io/hostname
+
+  ## Node labels for controller pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  replicaCount: 1
+
+  # Define requests resources to avoid probe issues due to CPU utilization in busy nodes
+  # ref: https://github.com/kubernetes/ingress-nginx/issues/4735#issuecomment-551204903
+  # Ideally, there should be no limits.
+  # https://engineering.indeedblog.com/blog/2019/12/cpu-throttling-regression-fix/
+  resources:
+    #  limits:
+    #    cpu: 100m
+    #    memory: 90Mi
+      requests:
+        cpu: 100m
+        memory: 90Mi

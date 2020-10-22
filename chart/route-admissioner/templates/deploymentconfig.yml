@@ -6,7 +6,7 @@ metadata:
   labels:
     app: route-admissioner
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     app: route-admissioner
   triggers:
@@ -16,12 +16,18 @@ spec:
       labels:
         app: route-admissioner
     spec:
+    {{- if .Values.controller.nodeSelector }}
+      nodeSelector: {{ toYaml .Values.controller.nodeSelector | nindent 8 }}
+    {{- end }}
       serviceAccountName: route-admissioner
       initContainers:
         - name: admissioner-init
-          image: cedricpoon/route-admissioner:{{ $.Chart.AppVersion }}
+          image: {{ .repository }}:{{ $.Chart.AppVersion }}
           command: ['./init.sh']
           imagePullPolicy: IfNotPresent
+        {{- if .Values.controller.resources }}
+          resources: {{ toYaml .Values.controller.resources | nindent 12 }}
+        {{- end }}
           env:
             - name: namespace
               valueFrom:
@@ -29,8 +35,11 @@ spec:
                   fieldPath: metadata.namespace
       containers:
         - name: route-admissioner
-          image: cedricpoon/route-admissioner:{{ $.Chart.AppVersion }}
+          image: {{ .repository }}:{{ $.Chart.AppVersion }}
           imagePullPolicy: IfNotPresent
+        {{- if .Values.controller.resources }}
+          resources: {{ toYaml .Values.controller.resources | nindent 12 }}
+        {{- end }}
           args:
             - -tlsCertFile=/etc/admissioner/certs/cert.pem
             - -tlsKeyFile=/etc/admissioner/certs/key.pem
@@ -45,13 +54,6 @@ spec:
         - name: admissioner-certs
           secret:
             secretName: route-admissioner-certs
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - route-admissioner
-              topologyKey: kubernetes.io/hostname
+    {{- if .Values.controller.affinity }}
+      affinity: {{ toYaml .Values.controller.affinity | nindent 8 }}
+    {{- end }}
