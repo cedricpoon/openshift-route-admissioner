@@ -6,7 +6,7 @@ metadata:
   labels:
     app: route-admissioner
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.controller.replicaCount }}
   selector:
     app: route-admissioner
   triggers:
@@ -22,7 +22,7 @@ spec:
       serviceAccountName: route-admissioner
       initContainers:
         - name: admissioner-init
-          image: {{ .repository }}:{{ $.Chart.AppVersion }}
+          image: {{ .Values.controller.image.repository }}:{{ $.Chart.AppVersion }}
           command: ['./init.sh']
           imagePullPolicy: IfNotPresent
         {{- if .Values.controller.resources }}
@@ -35,7 +35,7 @@ spec:
                   fieldPath: metadata.namespace
       containers:
         - name: route-admissioner
-          image: {{ .repository }}:{{ $.Chart.AppVersion }}
+          image: {{ .Values.controller.image.repository }}:{{ $.Chart.AppVersion }}
           imagePullPolicy: IfNotPresent
         {{- if .Values.controller.resources }}
           resources: {{ toYaml .Values.controller.resources | nindent 12 }}
