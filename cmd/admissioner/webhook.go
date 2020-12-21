@@ -178,7 +178,7 @@ func (whsvr *WebhookServer) mutate(ar *v1beta1.AdmissionReview) *v1beta1.Admissi
 
 	if allowedDomainStr, ok := tenantNamespace.GetAnnotations()[allowedDomainName]; ok {
 		allowedDomains := strings.Split(allowedDomainStr, ",")
-		if !withListedSuffix(routeSpec.Host, allowedDomains) {
+		if !withListedSuffix(routeSpec.Host, allowedDomains) && routeSpec.Host != "" {
 			return &v1beta1.AdmissionResponse{
 				Result: &metav1.Status{
 					Message: fmt.Sprintf(

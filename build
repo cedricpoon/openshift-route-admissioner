@@ -2,7 +2,7 @@
 
 : ${DOCKER_USER:? required}
 
-VERSION=$(cat chart/route-admissioner/Chart.yaml | grep -E '^appVersion: [0-9\.]+$' | tr -d 'appVersion: ')
+VERSION=$(cat chart/route-admissioner/Chart.yaml | grep -E '^appVersion: .+$' | sed 's/^appVersion: //')
 
 docker build -t ${DOCKER_USER}/route-admissioner:${VERSION} .
 
