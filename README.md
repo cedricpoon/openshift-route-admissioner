@@ -5,7 +5,7 @@
 Openshift operator for host whitelisting and label assignment on Route.
 
 ## Environment
-- OpenShift 4.5.4 (Kubernetes v1.18.3+012b3ec)
+- OpenShift 4.6.6 (Kubernetes v1.19.0+43983cd)
 - OKD 4.5.0-0.okd-2020-07-14-153706 (Kubernetes v1.18.3)
 
 ## Installation
