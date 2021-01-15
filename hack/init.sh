@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 secret=route-admissioner-certs
 
