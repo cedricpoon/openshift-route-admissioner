@@ -23,7 +23,7 @@ spec:
       initContainers:
         - name: admissioner-init
           image: {{ .Values.controller.image.repository }}:{{ $.Chart.AppVersion }}
-          command: ['./init.sh']
+          command: ['/bin/sh', 'init.sh']
           imagePullPolicy: IfNotPresent
         {{- if .Values.controller.resources }}
           resources: {{ toYaml .Values.controller.resources | nindent 12 }}
