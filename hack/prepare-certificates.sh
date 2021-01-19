@@ -71,5 +71,5 @@ kubectl create secret generic ${secret} \
         --from-file=cert.pem=${tmpdir}/server.crt \
         --from-file=ca-key.pem=${tmpdir}/ca.key \
         --from-file=ca-cert.pem=${tmpdir}/ca.crt \
-        --dry-run -o yaml |
+        --dry-run=client -o yaml |
     kubectl -n ${namespace} apply -f -

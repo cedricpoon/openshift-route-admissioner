@@ -1,4 +1,4 @@
-FROM golang:1.15.6-alpine AS build-env
+FROM golang:1.15-alpine AS build-env
 
 COPY . ./src/route-admissioner/
 
@@ -10,7 +10,7 @@ RUN apk add dep git curl && \
     curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && \
     chmod +x ./kubectl
 
-FROM alpine:3.13.0
+FROM alpine:3.13
 
 USER root
 
