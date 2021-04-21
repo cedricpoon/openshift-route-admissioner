@@ -167,7 +167,7 @@ func (whsvr *WebhookServer) mutate(ar *v1beta1.AdmissionReview) *v1beta1.Admissi
 		}
 	}
 
-	tenantNamespace, err := clientset.CoreV1().Namespaces().Get(route.GetNamespace(), metav1.GetOptions{})
+	tenantNamespace, err := clientset.CoreV1().Namespaces().Get(req.Namespace, metav1.GetOptions{})
 	if err != nil {
 		return &v1beta1.AdmissionResponse{
 			Result: &metav1.Status{
