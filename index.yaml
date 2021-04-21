@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   route-admissioner:
   - apiVersion: v2
+    appVersion: 0.4.4
+    created: "2021-04-21T07:58:50.562948304Z"
+    description: Host whitelisting and label assignment on Route
+    digest: f0076395c71d050f34ce3048812e56c3e958902889d008ef3d26f62afdbd46fa
+    name: route-admissioner
+    type: application
+    urls:
+    - https://github.com/cedricpoon/openshift-route-admissioner/releases/download/route-admissioner-0.3.11/route-admissioner-0.3.11.tgz
+    version: 0.3.11
+  - apiVersion: v2
     appVersion: 0.4.3
     created: "2021-03-03T06:48:46.586594897Z"
     description: Host whitelisting and label assignment on Route
